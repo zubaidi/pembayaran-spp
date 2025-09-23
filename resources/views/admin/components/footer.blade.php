@@ -1,0 +1,118 @@
+    <!-- jQuery -->
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <!-- Bootstrap JS -->
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+    <!-- Font Awesome -->
+    <script src="{{ asset('fontawesome/js/all.min.js') }}"></script>
+    <!-- DataTables JS -->
+    <script src="{{ asset('datatables/datatables.min.js') }}"></script>
+    <!-- Chart.js -->
+    <script src="{{ asset('js/chart.js') }}"></script>
+
+    <script>
+        // data table
+        $(document).ready(function() {
+            $('#dataTable').DataTable();
+        });
+
+        // // Sidebar Toggle
+        // document.getElementById('sidebarToggle').addEventListener('click', function() {
+        //     document.getElementById('sidebar').classList.toggle('show');
+        // });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleBtn = document.getElementById('sidebarToggle');
+            const sidebar = document.getElementById('sidebar');
+
+            toggleBtn.addEventListener('click', function() {
+                sidebar.classList.toggle('show');
+            });
+        });
+
+        // Update current time
+        function updateTime() {
+            const now = new Date();
+            const options = {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            };
+            document.getElementById('currentTime').textContent = now.toLocaleDateString('id-ID', options);
+        }
+
+        updateTime();
+        setInterval(updateTime, 60000);
+
+        // Logout function
+        function logout() {
+            if (confirm('Apakah Anda yakin ingin logout?')) {
+                // Simulate logout
+                alert('Anda telah berhasil logout!');
+                // In real application, redirect to login page
+                // window.location.href = 'login.html';
+            }
+        }
+
+        // Initialize Chart
+        const ctx = document.getElementById('paymentChart');
+        if (ctx) {
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'],
+                    datasets: [{
+                        label: 'Pembayaran SPP (Juta)',
+                        data: [45, 52, 48, 55, 58, 62, 65, 68, 70, 72, 75, 78],
+                        borderColor: '#4e73df',
+                        backgroundColor: 'rgba(78, 115, 223, 0.05)',
+                        tension: 0.3,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return 'Rp ' + value + 'M';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // menutup alert otomatis
+        setTimeout(function () {
+        let alert = document.querySelector('.alert');
+            if (alert) {
+                let bsAlert = new bootstrap.Alert(alert);
+                bsAlert.close();
+            }
+        }, 3000); // 1 detik
+
+        // Delete confirmation
+        document.querySelectorAll('.btn-danger').forEach(btn => {
+            if (btn.querySelector('.fa-trash')) {
+                btn.addEventListener('click', function() {
+                    if (confirm('Apakah Anda yakin ingin menghapus data ini?')) {
+                        alert('Data berhasil dihapus!');
+                        // In real application, send delete request to server
+                    }
+                });
+            }
+        });
+
+    </script>
