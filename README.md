@@ -1,8 +1,8 @@
 ## Tentang Aplikasi
 
 Contoh project UPK / UKK dengan studi kasus Pembayaran SPP. Fitur yang dikembangkan:
-- ** Admin Dashboard: Kelola data siswa, kelas, petugas, pembayaran
-- ** Siswa Dashboard: Pencarian riwayat pembayaran berdasarkan NIS / Nama  
+- Admin Dashboard: Kelola data siswa, kelas, petugas, pembayaran
+- Siswa Dashboard: Pencarian riwayat pembayaran berdasarkan NIS / Nama  
 
 ## Installasi
 
