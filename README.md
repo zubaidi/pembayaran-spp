@@ -11,6 +11,7 @@ Contoh project UPK / UKK dengan studi kasus Pembayaran SPP. Fitur yang dikembang
 - composer install
 - cp .env.example .env
 - php artisan migrate
+- masukkan data dengan perintah: php artisan db:seed
 
 ## Detail
 
