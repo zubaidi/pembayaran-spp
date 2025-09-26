@@ -3,13 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Kelas;
 use Illuminate\Support\Facades\DB;
 
 class KelasController extends Controller
 {
     public function index() {
-        $kelas = Kelas::all();
+        $kelas = DB::table('kelas')->get();
         // dd($kelas);
         return view('admin.kelas', compact('kelas'));
     }

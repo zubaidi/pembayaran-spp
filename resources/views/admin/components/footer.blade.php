@@ -115,4 +115,30 @@
             }
         });
 
+        document.addEventListener('DOMContentLoaded', function () {
+            const detailButtons = document.querySelectorAll('.btn-detail');
+
+            detailButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    // Ambil data dari atribut data-*
+                    const nisn = this.dataset.nisn;
+                    const nis = this.dataset.nis;
+                    const nama = this.dataset.nama;
+                    const kelas = this.dataset.kelas;
+                    const alamat = this.dataset.alamat;
+                    const noTelp = this.dataset.no_telp;
+                    const spp = this.dataset.spp;
+
+                    // Masukkan data ke dalam modal
+                    document.getElementById('nisn').textContent = nisn;
+                    document.getElementById('nis').textContent = nis;
+                    document.getElementById('nama').textContent = nama;
+                    document.getElementById('kelas').textContent = kelas;
+                    document.getElementById('alamat').textContent = alamat;
+                    document.getElementById('no_telp').textContent = noTelp;
+                    document.getElementById('spp').textContent = spp;
+                });
+            });
+        });
+
     </script>

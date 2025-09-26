@@ -25,5 +25,9 @@ class DatabaseSeeder extends Seeder
             'email' => 'user@codepelita.com',
             'password' => bcrypt('user123'),
         ]);
+        $this->call([
+            SppSeeder::class,
+            KelasSeeder::class
+        ]);
     }
 }

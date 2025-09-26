@@ -10,7 +10,7 @@
                 <i class="fas fa-tachometer-alt me-2"></i>
                 Dashboard
             </a>
-            <a href="#" class="sidebar-link">
+            <a href="{{ route('siswa.index') }}" class="sidebar-link">
                 <i class="fas fa-user-graduate me-2"></i>
                 Siswa
             </a>
