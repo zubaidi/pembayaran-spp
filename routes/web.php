@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\KelasController;
+use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\SppController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -24,4 +26,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/kelas/edit/{id}', [KelasController::class, 'editKelas'])->name('kelas.edit');
     Route::put('/kelas//edit/{id}', [KelasController::class, 'update'])->name('kelas.update');
     Route::delete('/kelas/hapus/{id}', [KelasController::class, 'destroy'])->name('kelas.hapus');
+    Route::get('/spp', [SppController::class, 'index'])->name('spp.index');
+    Route::get('/pembayaran', [PembayaranController::class, 'index'])->name('pembayaran.index');
+    Route::get('/pembayaran/tambah', [PembayaranController::class, 'tambahPembayaran'])->name('pembayaran.tambah');
 });

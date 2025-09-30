@@ -22,11 +22,11 @@
                 <i class="fas fa-user-tie me-2"></i>
                 Petugas
             </a>
-            <a href="#" class="sidebar-link">
+            <a href="{{ route('spp.index') }}" class="sidebar-link">
                 <i class="fas fa-money-bill-wave me-2"></i>
                 SPP
             </a>
-            <a href="#" class="sidebar-link">
+            <a href="{{ route('pembayaran.index') }}" class="sidebar-link">
                 <i class="fas fa-receipt me-2"></i>
                 Pembayaran
             </a>

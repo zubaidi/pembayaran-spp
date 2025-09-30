@@ -117,7 +117,7 @@
 
         <footer class="main-footer mt-4">
             <div class="container text-center py-3">
-                <span class="text-muted">&copy; {{ date('Y') }} My Dashboard. All rights reserved.</span>
+                <span class="text-muted">&copy; {{ date('Y') }} <code>Codepelita</code>. All rights reserved.</span>
             </div>
         </footer>
 
