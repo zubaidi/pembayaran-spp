@@ -15,7 +15,7 @@
                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                             Total Siswa
                                         </div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">1,234</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $siswa }}</div>
                                     </div>
                                     <div class="col-auto">
                                         <i class="fas fa-user-graduate fa-2x text-gray-300"></i>
@@ -33,7 +33,7 @@
                                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                             Total Kelas
                                         </div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">36</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $kelas }}</div>
                                     </div>
                                     <div class="col-auto">
                                         <i class="fas fa-users fa-2x text-gray-300"></i>
@@ -51,7 +51,7 @@
                                         <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
                                             Pembayaran Bulan Ini
                                         </div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">Rp 45.6M</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">Rp {{ $spp }}</div>
                                     </div>
                                     <div class="col-auto">
                                         <i class="fas fa-money-bill-wave fa-2x text-gray-300"></i>
@@ -102,27 +102,11 @@
                                 <div class="list-group">
                                     <a href="#" class="list-group-item list-group-item-action">
                                         <div class="d-flex w-100 justify-content-between">
-                                            <h6 class="mb-1">Ahmad Rizki</h6>
-                                            <small class="text-muted">2 jam lalu</small>
+                                            <h6 class="mb-1">Nama Siswa</h6>
+                                            <small class="text-muted">Date Time</small>
                                         </div>
-                                        <p class="mb-1">XII IPA 1 - Rp 150.000</p>
-                                        <small class="text-success"><i class="fas fa-check-circle"></i> Berhasil</small>
-                                    </a>
-                                    <a href="#" class="list-group-item list-group-item-action">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <h6 class="mb-1">Siti Nurhaliza</h6>
-                                            <small class="text-muted">5 jam lalu</small>
-                                        </div>
-                                        <p class="mb-1">XI IPS 2 - Rp 150.000</p>
-                                        <small class="text-success"><i class="fas fa-check-circle"></i> Berhasil</small>
-                                    </a>
-                                    <a href="#" class="list-group-item list-group-item-action">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <h6 class="mb-1">Budi Santoso</h6>
-                                            <small class="text-muted">1 hari lalu</small>
-                                        </div>
-                                        <p class="mb-1">X TKJ 1 - Rp 150.000</p>
-                                        <small class="text-warning"><i class="fas fa-clock"></i> Pending</small>
+                                        <p class="mb-1">Kelas - Nominal</p>
+                                        <small class="text-success"><i class="fas fa-check-circle"></i> Status</small>
                                     </a>
                                 </div>
                             </div>
@@ -321,5 +305,5 @@
     </div>
 
     <!-- Add Pembayaran Modal -->
-    
+
 </x-app-layout>

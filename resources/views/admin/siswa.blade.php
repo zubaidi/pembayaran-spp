@@ -19,27 +19,27 @@
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th>#</th>
-                                    <th>NISN</th>
-                                    <th>NIS</th>
-                                    <th>Nama</th>
-                                    <th>Kelas</th>
-                                    <th>Aksi</th>
+                                    <th style="text-align: center;">#</th>
+                                    <th style="text-align: center;">NISN</th>
+                                    <th style="text-align: center;">NIS</th>
+                                    <th style="text-align: center;">Nama</th>
+                                    <th style="text-align: center;">Kelas</th>
+                                    <th style="text-align: center;">Aksi</th>
                                 </tr>
                             </thead>
                             @foreach ($siswa as $s)
                                 <tbody>
                                     <tr>
-                                        <td>{{ $s->id }}</td>
-                                        <td>{{ $s->nisn }}</td>
-                                        <td>{{ $s->nis }}</td>
+                                        <td style="text-align: center; width: 80px;">{{ $s->id }}</td>
+                                        <td style="text-align: center; width: 100px;">{{ $s->nisn }}</td>
+                                        <td style="text-align: center; width: 100px;">{{ $s->nis }}</td>
                                         <td>{{ $s->nama }}</td>
-                                        <td>{{ $s->kelas->nama_kelas ?? '-' }}</td>
-                                        <td>
-                                            <button 
+                                        <td style="text-align: center; width: 100px;">{{ $s->kelas->nama_kelas ?? '-' }}</td>
+                                        <td style="text-align: center; width: 157px;">
+                                            <button
                                                 class="btn btn-warning btn-sm me-1 btn-detail"
-                                                data-bs-toggle="modal" 
-                                                data-bs-target="#detailSiswaModal"    
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#detailSiswaModal"
                                                 data-nisn="{{ $s->nisn }}"
                                                 data-nis="{{ $s->nis }}"
                                                 data-nama="{{ $s->nama }}"
@@ -50,12 +50,16 @@
                                                 title="Detail">
                                                 <i class="fas fa-eye"></i>
                                             </button>
-                                            <button class="btn btn-info btn-sm me-1" title="Edit">
+                                            <a href="{{ route('siswa.edit', $s->id) }}" class="btn btn-info btn-sm me-1" title="Edit">
                                                 <i class="fas fa-edit"></i>
-                                            </button>
-                                            <button class="btn btn-danger btn-sm" title="Hapus">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
+                                            </a>
+                                            <form action="{{ route('siswa.delete', $s->nisn) }}" method="post" style="display: inline;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-danger btn-sm" title="Hapus">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </form>
                                         </td>
                                     </tr>
                                 </tbody>

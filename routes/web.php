@@ -20,6 +20,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/siswa', [SiswaController::class, 'index'])->name('siswa.index');
     Route::get('/siswa/tambah', [SiswaController::class, 'tambahSiswa'])->name('siswa.tambah');
     Route::post('/siswa/tambah', [SiswaController::class, 'store'])->name('siswa.store');
+    Route::get('/siswa/edit/{id}', [SiswaController::class, 'editSiswa'])->name('siswa.edit');
+    Route::put('/siswa/edit/{id}', [SiswaController::class, 'update'])->name('siswa.update');
+    Route::delete('/siswa/hapus/{id}', [SiswaController::class, 'destroy'])->name('siswa.delete');
     Route::get('/kelas', [KelasController::class, 'index'])->name('kelas.index');
     Route::get('/kelas/tambah', [KelasController::class, 'tambahKelas'])->name('kelas.tambah');
     Route::post('/kelas/tambah', [KelasController::class, 'store'])->name('kelas.store');

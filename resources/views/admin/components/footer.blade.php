@@ -1,4 +1,4 @@
-    <!-- jQuery -->
+<!-- jQuery -->
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <!-- Bootstrap JS -->
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
@@ -12,7 +12,33 @@
     <script>
         // data table
         $(document).ready(function() {
-            $('#dataTable').DataTable();
+            $('#dataTable').DataTable({
+                autoWidth: false,
+                language: {
+                    "decimal":        "",
+                    "emptyTable":     "Tidak ada data yang tersedia di tabel",
+                    "info":           "Menampilkan _START_ sampai _END_ dari _TOTAL_ data",
+                    "infoEmpty":      "Menampilkan 0 sampai 0 dari 0 data",
+                    "infoFiltered":   "(difilter dari _MAX_ total data)",
+                    "infoPostFix":    "",
+                    "thousands":      ",",
+                    "lengthMenu":     "Tampilkan _MENU_ data",
+                    "loadingRecords": "Memuat...",
+                    "processing":     "Memproses...",
+                    "search":         "Cari:",
+                    "zeroRecords":    "Tidak ditemukan data yang cocok",
+                    "paginate": {
+                        "first":      "<<",
+                        "last":       ">>",
+                        "next":       ">",
+                        "previous":   "<"
+                    },
+                    "aria": {
+                        "sortAscending":  ": aktifkan untuk mengurutkan kolom secara menaik",
+                        "sortDescending": ": aktifkan untuk mengurutkan kolom secara menurun"
+                    }
+                },
+            });
         });
 
         // // Sidebar Toggle
