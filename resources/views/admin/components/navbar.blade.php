@@ -18,7 +18,7 @@
                 <i class="fas fa-users me-2"></i>
                 Kelas
             </a>
-            <a href="#" class="sidebar-link">
+            <a href="{{ route('petugas.index') }}" class="sidebar-link {{ request()->routeIs('petugas.*') ? 'active' : '' }}">
                 <i class="fas fa-user-tie me-2"></i>
                 Petugas
             </a>
