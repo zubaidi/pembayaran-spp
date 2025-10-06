@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\PembayaranController;
+use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\SppController;
 use Illuminate\Support\Facades\Route;
@@ -32,4 +33,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/spp', [SppController::class, 'index'])->name('spp.index');
     Route::get('/pembayaran', [PembayaranController::class, 'index'])->name('pembayaran.index');
     Route::get('/pembayaran/tambah', [PembayaranController::class, 'tambahPembayaran'])->name('pembayaran.tambah');
+
+    // Petugas routes
+    Route::get('/petugas', [PetugasController::class, 'index'])->name('petugas.index');
+    Route::get('/petugas/tambah', [PetugasController::class, 'tambahPetugas'])->name('petugas.tambah');
+    Route::post('/petugas/tambah', [PetugasController::class, 'store'])->name('petugas.store');
+    Route::get('/petugas/edit/{petugas}', [PetugasController::class, 'editPetugas'])->name('petugas.edit');
+    Route::put('/petugas/edit/{petugas}', [PetugasController::class, 'update'])->name('petugas.update');
+    Route::delete('/petugas/hapus/{petugas}', [PetugasController::class, 'destroy'])->name('petugas.destroy');
 });
