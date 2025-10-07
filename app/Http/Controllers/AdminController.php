@@ -46,4 +46,5 @@ class AdminController extends Controller
         $request->session()->regenerateToken();
         return redirect('/admin/login')->with('success', 'Logout Berhasil!');
     }
+    //get data
 }
