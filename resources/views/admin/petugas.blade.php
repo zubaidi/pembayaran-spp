@@ -20,6 +20,7 @@
                             <thead>
                                 <tr>
                                     <th style="text-align: center;">#</th>
+                                    <th style="text-align: center;">ID</th>
                                     <th style="text-align: center;">Username</th>
                                     <th style="text-align: center;">Nama Petugas</th>
                                     <th style="text-align: center;">Level</th>
@@ -29,10 +30,11 @@
                             <tbody>
                                 @foreach ($petugas as $p)
                                     <tr>
-                                        <td style="text-align: center; width: 80px;">{{ $loop->iteration }}</td>
-                                        <td>{{ $p->username }}</td>
-                                        <td>{{ $p->nama_petugas }}</td>
-                                        <td style="text-align: center;">{{ $p->level }}</td>
+                                        <td style="text-align: center; width: 60px;">{{ $loop->iteration }}</td>
+                                        <td style="text-align: center; width: 100px;">{{ $p->id_petugas }}</td>
+                                        <td style="width: 120px;">{{ $p->username }}</td>
+                                        <td style="width: 140px;">{{ $p->nama_petugas }}</td>
+                                        <td style="width: 100px;">{{ $p->level }}</td>
                                         <td style="text-align: center; width: 120px;">
                                             <a href="{{ route('petugas.edit', $p->id) }}" class="btn btn-info btn-sm me-1" title="Edit">
                                                 <i class="fas fa-edit"></i>

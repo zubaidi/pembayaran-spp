@@ -41,4 +41,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/petugas/edit/{petugas}', [PetugasController::class, 'editPetugas'])->name('petugas.edit');
     Route::put('/petugas/edit/{petugas}', [PetugasController::class, 'update'])->name('petugas.update');
     Route::delete('/petugas/hapus/{petugas}', [PetugasController::class, 'destroy'])->name('petugas.destroy');
+
+    // Logout
+    Route::get('/logout', [AdminController::class, 'logout'])->name('logout');
+});
+Route::middleware(['auth', 'petugas'])->group(function() {
+    Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
+    Route::get('/siswa', [SiswaController::class, 'index'])->name('siswa.index');
 });

@@ -167,4 +167,16 @@
             });
         });
 
+        // Fungsi untuk menghasilkan ID otomatis
+        function generateUserId() {
+            const now = new Date();
+            const timestamp = now.getTime();
+            const uniqueId = 'USR' + timestamp.toString().slice(-5); // ambil 5 digit terakhir
+            // Set value input
+            document.getElementById('id_petugas').value = uniqueId;
+        }
+
+        // Panggil fungsi saat halaman dimuat
+        window.onload = generateUserId;
+
     </script>

@@ -9,21 +9,16 @@ use Illuminate\Validation\Rule;
 
 class PetugasController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    
     public function index()
     {
         $petugas = Petugas::all();
-        return view('petugas.index', compact('petugas'));
+        return view('admin.petugas', compact('petugas'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function tambahPetugas()
     {
-        return view('petugas.tambah');
+        return view('admin.tambahpetugas');
     }
 
     /**
@@ -31,14 +26,8 @@ class PetugasController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'username' => 'required|string|max:25|unique:petugas',
-            'password' => 'required|string|min:6',
-            'nama_petugas' => 'required|string|max:50',
-            'level' => 'required|in:admin,petugas',
-        ]);
-
         Petugas::create([
+            'id_petugas' => $request->id_petugas,
             'username' => $request->username,
             'password' => Hash::make($request->password),
             'nama_petugas' => $request->nama_petugas,
@@ -53,7 +42,7 @@ class PetugasController extends Controller
      */
     public function editPetugas(Petugas $petugas)
     {
-        return view('petugas.edit', compact('petugas'));
+        return view('admin.editpetugas', compact('petugas'));
     }
 
     /**

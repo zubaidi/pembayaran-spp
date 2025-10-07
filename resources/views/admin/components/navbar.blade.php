@@ -30,7 +30,7 @@
                 <i class="fas fa-receipt me-2"></i>
                 Pembayaran
             </a>
-            <a href="#" class="sidebar-link mt-auto" onclick="logout()">
+            <a href="{{ route('logout') }}" class="sidebar-link mt-auto" onclick="logout()">
                 <i class="fas fa-sign-out-alt me-2"></i>
                 Logout
             </a>

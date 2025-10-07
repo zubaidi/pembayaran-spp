@@ -23,6 +23,7 @@ class Petugas extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'id_petugas',
         'username',
         'password',
         'nama_petugas',

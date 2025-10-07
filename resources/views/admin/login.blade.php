@@ -26,7 +26,7 @@
                     <form method="POST" action="#">
                         @csrf
                         <div class="mb-3 floating-label">
-                            <input type="email" class="form-control" id="username" placeholder=" " name="email" required>
+                            <input type="text" class="form-control" id="username" placeholder=" " name="email" required>
                             <label for="username">Email</label>
                         </div>
 

@@ -17,6 +17,11 @@
                     <form action="{{ route('petugas.store') }}" method="POST">
                         @csrf
                         <div class="mb-3">
+                            <label for="id_petugas" class="form-label">Id Petugas</label>
+                            <input type="text" class="form-control" id="id_petugas" name="id_petugas" value="{{ old('id_petugas') }}" readonly>
+                        </div>
+                        
+                        <div class="mb-3">
                             <label for="username" class="form-label">Username</label>
                             <input type="text" class="form-control" id="username" name="username" value="{{ old('username') }}" required>
                         </div>
