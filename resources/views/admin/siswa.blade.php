@@ -27,14 +27,14 @@
                                     <th style="text-align: center;">Aksi</th>
                                 </tr>
                             </thead>
+                            <tbody>
                             @foreach ($siswa as $s)
-                                <tbody>
                                     <tr>
                                         <td style="text-align: center; width: 80px;">{{ $s->id }}</td>
                                         <td style="text-align: center; width: 100px;">{{ $s->nisn }}</td>
                                         <td style="text-align: center; width: 100px;">{{ $s->nis }}</td>
                                         <td>{{ $s->nama }}</td>
-                                        <td style="text-align: center; width: 100px;">{{ $s->kelas->nama_kelas ?? '-' }}</td>
+                                        <td style="text-align: center; width: 100px;">{{ $s->kelas->nama_kelas }}</td>
                                         <td style="text-align: center; width: 157px;">
                                             <button
                                                 class="btn btn-warning btn-sm me-1 btn-detail"
@@ -43,7 +43,7 @@
                                                 data-nisn="{{ $s->nisn }}"
                                                 data-nis="{{ $s->nis }}"
                                                 data-nama="{{ $s->nama }}"
-                                                data-kelas="{{ $s->kelas->nama_kelas }}"
+                                                data-kelas="{{ $s->kelas->nama_kelas ?? '-' }}"
                                                 data-alamat="{{ $s->alamat }}"
                                                 data-no_telp="{{ $s->no_telp }}"
                                                 data-spp="{{ $s->spp->tahun }} - {{ number_format($s->spp->nominal, 0, ',', '.') }}"
@@ -62,8 +62,8 @@
                                             </form>
                                         </td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
-                            @endforeach
                         </table>
                     </div>
                 </div>

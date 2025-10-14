@@ -97,44 +97,6 @@
                                         </button>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>002</td>
-                                    <td>0034567891</td>
-                                    <td>Siti Nurhaliza Putri</td>
-                                    <td>01/11/2024</td>
-                                    <td>November</td>
-                                    <td>2024</td>
-                                    <td>Rp 150.000</td>
-                                    <td>Siti Aminah</td>
-                                    <td><span class="badge bg-success">Lunas</span></td>
-                                    <td>
-                                        <button class="btn btn-info btn-sm me-1" title="Detail">
-                                            <i class="fas fa-eye"></i>
-                                        </button>
-                                        <button class="btn btn-warning btn-sm" title="Cetak">
-                                            <i class="fas fa-print"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>003</td>
-                                    <td>0034567892</td>
-                                    <td>Budi Santoso</td>
-                                    <td>31/10/2024</td>
-                                    <td>Oktober</td>
-                                    <td>2024</td>
-                                    <td>Rp 150.000</td>
-                                    <td>Administrator</td>
-                                    <td><span class="badge bg-warning">Pending</span></td>
-                                    <td>
-                                        <button class="btn btn-info btn-sm me-1" title="Detail">
-                                            <i class="fas fa-eye"></i>
-                                        </button>
-                                        <button class="btn btn-warning btn-sm" title="Cetak">
-                                            <i class="fas fa-print"></i>
-                                        </button>
-                                    </td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>

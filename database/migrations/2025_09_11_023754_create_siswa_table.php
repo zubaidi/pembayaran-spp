@@ -15,11 +15,14 @@ return new class extends Migration
             $table->id();
             $table->string('nisn')->unique();
             $table->string('nis')->unique();
-            $table->string('nama', 35);$table->foreignId('id_kelas')->references('id')->on('kelas');
+            $table->string('nama', 35);
+            $table->string('id_kelas', 6);
             $table->string('alamat', 100);
             $table->string('no_telp', 15);
-            $table->foreignId('id_spp')->references('id')->on('spp');
+            $table->foreignId('id_spp')->references('id_spp')->on('spp');
             $table->timestamps();
+
+            $table->foreign('id_kelas')->references('id_kelas')->on('kelas');
         });
     }
 

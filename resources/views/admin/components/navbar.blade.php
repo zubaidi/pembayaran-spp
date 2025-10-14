@@ -18,10 +18,6 @@
                 <i class="fas fa-users me-2"></i>
                 Kelas
             </a>
-            <a href="{{ route('petugas.index') }}" class="sidebar-link {{ request()->routeIs('petugas.*') ? 'active' : '' }}">
-                <i class="fas fa-user-tie me-2"></i>
-                Petugas
-            </a>
             <a href="{{ route('spp.index') }}" class="sidebar-link">
                 <i class="fas fa-money-bill-wave me-2"></i>
                 SPP

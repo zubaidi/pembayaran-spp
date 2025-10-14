@@ -10,10 +10,21 @@
     <script src="{{ asset('js/chart.js') }}"></script>
 
     <script>
+        // login error
+        document.addEventListener('DOMContentLoaded', function () {
+            @error('email')
+                var toastEl = document.getElementById('loginAlert');
+                var toast = new bootstrap.Toast(toastEl);
+                toast.show();
+            @enderror
+        });
+
         // data table
         $(document).ready(function() {
             $('#dataTable').DataTable({
                 autoWidth: false,
+                paging: true,
+                lengthChange: true,
                 language: {
                     "decimal":        "",
                     "emptyTable":     "Tidak ada data yang tersedia di tabel",
@@ -167,16 +178,16 @@
             });
         });
 
-        // Fungsi untuk menghasilkan ID otomatis
-        function generateUserId() {
-            const now = new Date();
-            const timestamp = now.getTime();
-            const uniqueId = 'USR' + timestamp.toString().slice(-5); // ambil 5 digit terakhir
-            // Set value input
-            document.getElementById('id_petugas').value = uniqueId;
-        }
+        // // Fungsi untuk menghasilkan ID otomatis
+        // function generateUserId() {
+        //     const now = new Date();
+        //     const timestamp = now.getTime();
+        //     const uniqueId = 'USR' + timestamp.toString().slice(-5); // ambil 5 digit terakhir
+        //     // Set value input
+        //     document.getElementById('id_petugas').value = uniqueId;
+        // }
 
-        // Panggil fungsi saat halaman dimuat
-        window.onload = generateUserId;
+        // // Panggil fungsi saat halaman dimuat
+        // window.onload = generateUserId;
 
     </script>

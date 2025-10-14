@@ -53,7 +53,7 @@
                         </div>
 
                         <div class="text-center mt-3">
-                            <a href="#" class="text-decoration-none">Lupa password?</a>
+                            <p>Email: admin@codepelita.com <br> Password: password123</p>
                         </div>
                     </form>
                 </div>
@@ -63,11 +63,17 @@
 
     <!-- Alert Container -->
     <div class="position-fixed top-0 end-0 p-3" style="z-index: 11">
-        <div id="loginAlert" class="toast align-items-center text-white bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div id="loginAlert" class="toast align-items-center text-white bg-danger border-0 @error('email') show @else d-none @enderror" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000">
             <div class="d-flex">
                 <div class="toast-body">
                     <i class="fas fa-exclamation-circle me-2"></i>
-                    <span id="alertMessage">Username atau password salah!</span>
+                    <span id="alertMessage">
+                        @error('email')
+                            {{ $message }}
+                        @else
+                            Username atau password salah!
+                        @enderror
+                    </span>
                 </div>
                 <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
             </div>

@@ -14,14 +14,14 @@ return new class extends Migration
         Schema::create('pembayaran', function (Blueprint $table) {
             $table->id();
             $table->integer('id_pembayaran')->unique();
-            $table->foreignId('id_petugas')->references('id')->on('petugas');
-            $table->foreignId('nisn')->references('nisn')->on('siswa');
+            $table->string('nis');
             $table->date('tgl_bayar');
             $table->string('bulan_dibayar', 20);
             $table->year('tahun_dibayar');
             $table->foreignId('id_spp')->references('id')->on('spp');
             $table->integer('jumlah_bayar');
             $table->timestamps();
+            $table->foreign('nis')->references('nis')->on('siswa');
         });
     }
 
