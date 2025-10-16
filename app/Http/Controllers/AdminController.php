@@ -6,9 +6,12 @@ use App\Models\Siswa;
 use App\Models\User;
 use App\Models\Kelas;
 use App\Models\Spp;
+use App\Models\Pembayaran;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 use App\Http\Controllers\Controller;
 
@@ -23,7 +26,53 @@ class AdminController extends Controller
         $siswa = Siswa::count('nisn');
         $kelas = Kelas::count();
         $spp = Spp::count();
-        return view('admin.dashboard', compact('siswa', 'kelas', 'spp'));
+        $pembayaran = Pembayaran::with('siswa', 'spp')->latest()->take(1)->get();
+        $totalpembayaran = Pembayaran::whereDate('tgl_bayar', Carbon::today())->sum('jumlah_bayar');
+        $ket = Pembayaran::where('keterangan', 'Menunggak')->count();
+
+        // tampilkan data menunggak
+        $menunggakdata = DB::table('pembayaran')
+            ->join('siswa', 'pembayaran.nis', '=', 'siswa.nisn')
+            ->where('pembayaran.keterangan', 'Menunggak')
+            ->select('siswa.nisn', 'siswa.nama')
+            ->get();
+
+        /** Menampilkan data di grafik */
+        $bulanMapping = [
+            'Januari' => 1,
+            'Februari' => 2,
+            'Maret' => 3,
+            'April' => 4,
+            'Mei' => 5,
+            'Juni' => 6,
+            'Juli' => 7,
+            'Agustus' => 8,
+            'September' => 9,
+            'Oktober' => 10,
+            'November' => 11,
+            'Desember' => 12,
+        ];
+        $caseStatement = "CASE bulan_dibayar ";
+        foreach ($bulanMapping as $namaBulan => $nomor) {
+            $caseStatement .= "WHEN '{$namaBulan}' THEN {$nomor} ";
+        }
+        $caseStatement .= "ELSE 13 END";
+
+        $dataPembayaran = DB::table('pembayaran')
+            ->select('bulan_dibayar', 'tahun_dibayar', DB::raw('SUM(jumlah_bayar) as total'))
+            ->groupBy('tahun_dibayar', 'bulan_dibayar')
+            ->orderBy('tahun_dibayar', 'asc')
+            ->orderByRaw($caseStatement)
+            ->get();
+
+        $labels = $dataPembayaran->map(function ($item) {
+            return ucfirst($item->bulan_dibayar) . ' ' . $item->tahun_dibayar;
+        });
+
+        $totals = $dataPembayaran->pluck('total');
+        /** End Menampilkan data di grafik */
+
+        return view('admin.dashboard', compact('siswa', 'kelas', 'spp', 'pembayaran', 'totalpembayaran', 'ket', 'menunggakdata', 'labels','totals'));
     }
 
     public function authenticate(Request $request)

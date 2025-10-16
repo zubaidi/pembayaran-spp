@@ -14,7 +14,7 @@
 
             <div class="card shadow">
                 <div class="card-body">
-                    <form method="POST" action="{{ route('pembayaran.store') }}">
+                    <form method="post" action="{{ route('pembayaran.store') }}">
                         @csrf
                         <div class="row">
                             <div class="mb-3">

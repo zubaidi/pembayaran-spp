@@ -1,309 +1,243 @@
 <x-app-layout>
     <!-- Page Content -->
-        <div class="container-fluid p-4" id="pageContent">
-            <!-- Dashboard Page -->
-            <div id="dashboardPage" class="page">
-                <h1 class="h3 mb-4">Selamat Datang {{ Auth::user()->name }}</h1>
+    <div class="container-fluid p-4" id="pageContent">
+        <!-- Dashboard Page -->
+        <div id="dashboardPage" class="page">
+            <h1 class="h3 mb-4">Selamat Datang {{ Auth::user()->name }}</h1>
 
-                <!-- Stat Cards -->
-                <div class="row mb-4">
-                    <div class="col-xl-3 col-md-6 mb-3">
-                        <div class="card border-left-primary shadow h-100">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                            Total Siswa
-                                        </div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $siswa }}</div>
+            <!-- Stat Cards -->
+            <div class="row mb-4">
+                <div class="col-xl-3 col-md-6 mb-3">
+                    <div class="card border-left-primary shadow h-100">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                        Total Siswa
                                     </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-user-graduate fa-2x text-gray-300"></i>
-                                    </div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $siswa }}</div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-user-graduate fa-2x text-gray-300"></i>
                                 </div>
                             </div>
+                            <a href="{{ route('siswa.index') }}"
+                                class="position-absolute small text-secondary font-italic"
+                                style="bottom: 10px; right: 15px; text-decoration: none;">
+                                Lihat Data <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
                         </div>
                     </div>
+                </div>
 
-                    <div class="col-xl-3 col-md-6 mb-3">
-                        <div class="card border-left-success shadow h-100">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                            Total Kelas
-                                        </div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $kelas }}</div>
+                <div class="col-xl-3 col-md-6 mb-3">
+                    <div class="card border-left-success shadow h-100">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                        Total Kelas
                                     </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-users fa-2x text-gray-300"></i>
-                                    </div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $kelas }}</div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-users fa-2x text-gray-300"></i>
                                 </div>
                             </div>
+                            <a href="{{ route('kelas.index') }}"
+                                class="position-absolute small text-secondary font-italic"
+                                style="bottom: 10px; right: 15px; text-decoration: none;">
+                                Lihat Data <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
                         </div>
                     </div>
+                </div>
 
-                    <div class="col-xl-3 col-md-6 mb-3">
-                        <div class="card border-left-info shadow h-100">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                            Pembayaran Bulan Ini
-                                        </div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">Rp {{ $spp }}</div>
+                <div class="col-xl-3 col-md-6 mb-3">
+                    <div class="card border-left-info shadow h-100">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                        Pembayaran Bulan Ini
                                     </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-money-bill-wave fa-2x text-gray-300"></i>
-                                    </div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">Rp {{ $totalpembayaran }}</div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-3 col-md-6 mb-3">
-                        <div class="card border-left-warning shadow h-100">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                            Menunggak
-                                        </div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">234</div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-exclamation-triangle fa-2x text-gray-300"></i>
-                                    </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-money-bill-wave fa-2x text-gray-300"></i>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Charts Row -->
-                <div class="row">
-                    <div class="col-xl-8 col-lg-7 mb-4">
-                        <div class="card shadow">
-                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                <h6 class="m-0 font-weight-bold text-primary">Grafik Pembayaran SPP</h6>
-                            </div>
-                            <div class="card-body">
-                                <canvas id="paymentChart" height="100"></canvas>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-4 col-lg-5 mb-4">
-                        <div class="card shadow">
-                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                <h6 class="m-0 font-weight-bold text-primary">Pembayaran Terbaru</h6>
-                            </div>
-                            <div class="card-body">
-                                <div class="list-group">
-                                    <a href="#" class="list-group-item list-group-item-action">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <h6 class="mb-1">Nama Siswa</h6>
-                                            <small class="text-muted">Date Time</small>
-                                        </div>
-                                        <p class="mb-1">Kelas - Nominal</p>
-                                        <small class="text-success"><i class="fas fa-check-circle"></i> Status</small>
-                                    </a>
+                <div class="col-xl-3 col-md-6 mb-3">
+                    <div class="card border-left-warning shadow h-100">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                        Menunggak
+                                    </div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $ket }}</div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-exclamation-triangle fa-2x text-gray-300"></i>
                                 </div>
                             </div>
                         </div>
+                        <a href="#" class="position-absolute small text-secondary font-italic"
+                                style="bottom: 10px; right: 15px; text-decoration: none;" data-bs-toggle="modal"
+                                data-bs-target="#modalMenunggak">
+                            Lihat Data <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
                     </div>
                 </div>
             </div>
 
-            <!-- Petugas Page -->
-            <div id="petugasPage" class="page" style="display: none;">
-                <h1 class="h3 mb-4">Data Petugas</h1>
-
-                <div class="card shadow">
-                    <div class="card-header py-3 d-flex justify-content-between align-items-center">
-                        <h6 class="m-0 font-weight-bold text-primary">Daftar Petugas</h6>
-                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addPetugasModal">
-                            <i class="fas fa-plus me-2"></i>Tambah Petugas
-                        </button>
+            <!-- Charts Row -->
+            <div class="row">
+                <div class="col-xl-8 col-lg-7 mb-4">
+                    <div class="card shadow">
+                        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                            <h6 class="m-0 font-weight-bold text-primary">Grafik Pembayaran SPP</h6>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="paymentChart" height="100"></canvas>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-bordered" width="100%" cellspacing="0">
+                </div>
+
+                <div class="col-xl-4 col-lg-5 mb-4">
+                    <div class="card shadow">
+                        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                            <h6 class="m-0 font-weight-bold text-primary">Pembayaran Terbaru</h6>
+                        </div>
+                        <div class="card-body">
+                            @forelse($pembayaran as $item)
+                                <a href="#" class="list-group-item list-group-item-action">
+                                    <div class="w-100">
+                                        <h5 class="mb-1">{{ $item->siswa->nama ?? '-' }}</h5>
+                                        <div class="d-flex justify-content-between">
+                                            <small class="text-muted">
+                                                NIS: {{ $item->siswa->nis ?? '-' }}
+                                            </small>
+                                            <small class="text-muted">
+                                                {{ \Carbon\Carbon::parse($item->tgl_bayar)->format('d M Y H:i') }}
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <p class="mb-1">
+                                        {{ $item->siswa->kelas->nama_kelas ?? '-' }} -
+                                        Rp{{ number_format($item->jumlah_bayar, 0, ',', '.') }}
+                                    </p>
+
+                                    <small class="text-success">
+                                        <i class="fas fa-check-circle"></i>
+                                        {{ $item->keterangan ?? 'Lunas' }}
+                                    </small>
+                                </a>
+                            @empty
+                                <div class="alert alert-info">Belum ada data pembayaran.</div>
+                            @endforelse
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="modalMenunggak" tabindex="-1" role="dialog" aria-labelledby="modalMenunggakLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-warning text-white">
+                        <h5 class="modal-title" id="riwayatModalLabel">Data Siswa Yang Menunggak</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        @if ($menunggakdata->isEmpty())
+                            <p>Tidak ada siswa yang menunggak pembayaran.</p>
+                        @else
+                            <table class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th>ID Petugas</th>
-                                        <th>Username</th>
-                                        <th>Nama Petugas</th>
-                                        <th>Level</th>
-                                        <th>Status</th>
-                                        <th>Aksi</th>
+                                        <th>No</th>
+                                        <th>NISN</th>
+                                        <th>Nama</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>admin</td>
-                                        <td>Administrator</td>
-                                        <td><span class="badge bg-danger">Admin</span></td>
-                                        <td><span class="badge bg-success">Aktif</span></td>
-                                        <td>
-                                            <button class="btn btn-info btn-sm me-1" title="Edit">
-                                                <i class="fas fa-edit"></i>
-                                            </button>
-                                            <button class="btn btn-danger btn-sm" title="Hapus">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>bendahara1</td>
-                                        <td>Siti Aminah</td>
-                                        <td><span class="badge bg-primary">Petugas</span></td>
-                                        <td><span class="badge bg-success">Aktif</span></td>
-                                        <td>
-                                            <button class="btn btn-info btn-sm me-1" title="Edit">
-                                                <i class="fas fa-edit"></i>
-                                            </button>
-                                            <button class="btn btn-danger btn-sm" title="Hapus">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>operator1</td>
-                                        <td>Budi Hartono</td>
-                                        <td><span class="badge bg-primary">Petugas</span></td>
-                                        <td><span class="badge bg-warning">Non Aktif</span></td>
-                                        <td>
-                                            <button class="btn btn-info btn-sm me-1" title="Edit">
-                                                <i class="fas fa-edit"></i>
-                                            </button>
-                                            <button class="btn btn-danger btn-sm" title="Hapus">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
+                                    @foreach ($menunggakdata as $index => $item)
+                                        <tr>
+                                            <td>{{ $index + 1 }}</td>
+                                            <td>{{ $item->nisn }}</td>
+                                            <td>{{ $item->nama }}</td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
-                        </div>
+                        @endif
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Add Kelas Modal -->
-    <div class="modal fade" id="addKelasModal" tabindex="-1" aria-labelledby="kelasModalLabel">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="kelasModalLabel">Title Modal</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <form method="POST" action="{{ route('kelas.store') }}">
-                        <div class="mb-3">
-                            <label class="form-label">ID Kelas</label>
-                            <input type="text" class="form-control" placeholder="Contoh: KLS001" name="id_kelas">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Nama Kelas</label>
-                            <input type="text" class="form-control" placeholder="Contoh: X PPLG 1" name="nama_kelas">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Kompetensi Keahlian</label>
-                            <select class="form-control" name="kompetensi_keahlian" required>
-                                <option value="">-- Pilih Jurusan --</option>
-                                <option value="RPL">RPL</option>
-                                <option value="TKJ">TKJ</option>
-                                <option value="TKR">TKR</option>
-                                <option value="TSM">TSM</option>
-                                <option value="DPB">DPB</option>
-                            </select>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                    <button type="button" class="btn btn-primary">Simpan</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Add Petugas Modal -->
-    <div class="modal fade" id="addPetugasModal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Tambah Petugas Baru</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="mb-3">
-                            <label class="form-label">Username</label>
-                            <input type="text" class="form-control" placeholder="Masukkan username">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Password</label>
-                            <input type="password" class="form-control" placeholder="Masukkan password">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Nama Petugas</label>
-                            <input type="text" class="form-control" placeholder="Masukkan nama lengkap">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Level</label>
-                            <select class="form-select">
-                                <option value="admin">Admin</option>
-                                <option value="petugas">Petugas</option>
-                            </select>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                    <button type="button" class="btn btn-primary">Simpan</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Add SPP Modal -->
-    <div class="modal fade" id="addSppModal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Tambah SPP Baru</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="mb-3">
-                            <label class="form-label">Tahun Ajaran</label>
-                            <input type="text" class="form-control" placeholder="Contoh: 2024/2025">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Nominal</label>
-                            <input type="number" class="form-control" placeholder="Masukkan nominal">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Keterangan</label>
-                            <textarea class="form-control" rows="3" placeholder="Masukkan keterangan"></textarea>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                    <button type="button" class="btn btn-primary">Simpan</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Add Pembayaran Modal -->
-
+    {{-- mengatur tabel pembayaran --}}
+    <!-- Chart.js -->
+    <script src="{{ asset('js/chart.js') }}"></script>
+    <script src="{{ asset('js/chartjs-plugin-datalabels.min.js') }}"></script>
+    <script>
+        const ctx = document.getElementById('paymentChart');
+        if (ctx) {
+            const paymentChart = new Chart(ctx.getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: {!! json_encode($labels) ?? [] !!},
+                    datasets: [{
+                        label: 'Total Pembayaran SPP',
+                        data: {!! json_encode($totals) ?? [] !!},
+                        backgroundColor: 'rgba(54, 162, 235, 0.7)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    plugins: {
+                        datalabels: {
+                            color: '#000',
+                            anchor: 'end',
+                            align: 'bottom',
+                            formatter: function(value) {
+                                return 'Rp' + value.toLocaleString();
+                            },
+                            font: {
+                                weight: 'bold',
+                                size: 12
+                            }
+                        },
+                        legend: {
+                            display: true,
+                            position: 'bottom',
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return 'Rp' + value.toLocaleString();
+                                }
+                            }
+                        }
+                    },
+                    responsive: true,
+                },
+                plugins: [ChartDataLabels] // Daftarkan plugin
+            });
+        }
+    </script>
 </x-app-layout>

@@ -41,6 +41,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/pembayaran/edit/{id}', [PembayaranController::class, 'editPembayaran'])->name('pembayaran.edit');
     Route::put('/pembayaran/edit/{id}', [PembayaranController::class, 'update'])->name('pembayaran.update');
     Route::delete('/pembayaran/hapus/{id}', [PembayaranController::class, 'destroy'])->name('pembayaran.delete');
+    Route::get('/pembayaran/search', [PembayaranController::class, 'search'])->name('pembayaran.search');
 
     // Logout
     Route::get('/logout', [AdminController::class, 'logout'])->name('logout');

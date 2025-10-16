@@ -30,7 +30,7 @@
                             <tbody>
                             @foreach ($siswa as $s)
                                     <tr>
-                                        <td style="text-align: center; width: 80px;">{{ $s->id }}</td>
+                                        <td style="text-align: center; width: 60px;">{{ $s->id }}</td>
                                         <td style="text-align: center; width: 100px;">{{ $s->nisn }}</td>
                                         <td style="text-align: center; width: 100px;">{{ $s->nis }}</td>
                                         <td>{{ $s->nama }}</td>
