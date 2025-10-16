@@ -10,6 +10,7 @@
     <script src="{{ asset('js/chart.js') }}"></script>
 
     <script>
+        
         // login error
         document.addEventListener('DOMContentLoaded', function () {
             @error('email')
@@ -189,5 +190,43 @@
 
         // // Panggil fungsi saat halaman dimuat
         // window.onload = generateUserId;
+
+        // fungsi mencari data siswa
+        document.getElementById('searchInput').addEventListener('keyup', function() {
+        const query = this.value;
+
+        fetch(`/siswa/search?q=${query}`)
+            .then(response => response.json())
+            .then(data => {
+                const tableBody = document.getElementById('siswaTableBody');
+                tableBody.innerHTML = '';
+
+                data.forEach(siswa => {
+                    const jumlahBayar = siswa.spp?.nominal || 0;
+                    const row = `
+                        <tr>
+                            <td>${siswa.nis}</td>
+                            <td>${siswa.nama}</td>
+                            <td>
+                                <button type="button" class="btn btn-sm btn-primary" onclick="pilihSiswa('${siswa.nis}', '${siswa.nama}', '${jumlahBayar}')">
+                                    Pilih
+                                </button>
+                            </td>
+                        </tr>
+                    `;
+                    tableBody.insertAdjacentHTML('beforeend', row);
+                });
+            });
+    });
+
+    function pilihSiswa(nis, nama, jumlahBayar) {
+        document.getElementById('nis').value = nis;
+        document.getElementById('nama_siswa').value = nama;
+        document.getElementById('jumlah_bayar').value = jumlahBayar;
+
+        // Tutup modal
+        const modal = bootstrap.Modal.getInstance(document.getElementById('modalCariSiswa'));
+        modal.hide();
+    }
 
     </script>

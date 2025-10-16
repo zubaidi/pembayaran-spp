@@ -16,6 +16,7 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('pembayaran.store') }}">
                         @csrf
+                        @method('PUT')
                         <div class="row">
                             <div class="mb-3">
                                 <label class="form-label">ID Pembayaran</label>
