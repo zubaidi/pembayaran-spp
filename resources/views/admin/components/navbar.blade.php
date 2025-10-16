@@ -1,4 +1,4 @@
-<!-- Sidebar -->
+    <!-- Sidebar -->
     <nav class="sidebar" id="sidebar">
         <a href="#" class="sidebar-brand">
             <i class="fas fa-graduation-cap me-2"></i>
