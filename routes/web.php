@@ -3,14 +3,14 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\PembayaranController;
-use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\SppController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('user.index');
-});
+Route::get('/', [UserController::class, 'index'])->name('user.index');
+Route::get('/search', [UserController::class, 'search'])->name('user.search');
+Route::get('/search/print', [UserController::class, 'print'])->name('user.search.print');
 
 // login admin
 Route::get('/login', [AdminController::class, 'login'])->name('admin.login');
@@ -46,3 +46,4 @@ Route::middleware('auth')->group(function () {
     // Logout
     Route::get('/logout', [AdminController::class, 'logout'])->name('logout');
 });
+

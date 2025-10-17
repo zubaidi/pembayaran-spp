@@ -87,8 +87,8 @@
                             </div>
                         </div>
                         <a href="#" class="position-absolute small text-secondary font-italic"
-                                style="bottom: 10px; right: 15px; text-decoration: none;" data-bs-toggle="modal"
-                                data-bs-target="#modalMenunggak">
+                            style="bottom: 10px; right: 15px; text-decoration: none;" data-bs-toggle="modal"
+                            data-bs-target="#modalMenunggak">
                             Lihat Data <i class="fas fa-arrow-right ml-1"></i>
                         </a>
                     </div>
@@ -145,7 +145,7 @@
                 </div>
             </div>
         </div>
-        <!-- Modal -->
+        <!-- Modal Lihat Data Tunggakan -->
         <div class="modal fade" id="modalMenunggak" tabindex="-1" role="dialog" aria-labelledby="modalMenunggakLabel"
             aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
@@ -164,6 +164,8 @@
                                         <th>No</th>
                                         <th>NISN</th>
                                         <th>Nama</th>
+                                        <th>Bulan Kekurangan</th>
+                                        <th>Nominal</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -172,6 +174,8 @@
                                             <td>{{ $index + 1 }}</td>
                                             <td>{{ $item->nisn }}</td>
                                             <td>{{ $item->nama }}</td>
+                                            <td>{{ $item->bulan_dibayar }}</td>
+                                            <td>{{ $item->jumlah_bayar }}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -191,53 +195,62 @@
     <script src="{{ asset('js/chart.js') }}"></script>
     <script src="{{ asset('js/chartjs-plugin-datalabels.min.js') }}"></script>
     <script>
-        const ctx = document.getElementById('paymentChart');
-        if (ctx) {
-            const paymentChart = new Chart(ctx.getContext('2d'), {
-                type: 'bar',
-                data: {
-                    labels: {!! json_encode($labels) ?? [] !!},
-                    datasets: [{
-                        label: 'Total Pembayaran SPP',
-                        data: {!! json_encode($totals) ?? [] !!},
+    const ctx = document.getElementById('paymentChart');
+    if (ctx) {
+        const paymentChart = new Chart(ctx.getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: {!! json_encode($labels) !!},
+                datasets: [
+                    {
+                        label: 'Lunas',
+                        data: {!! json_encode($lunasTotals) !!},
                         backgroundColor: 'rgba(54, 162, 235, 0.7)',
                         borderColor: 'rgba(54, 162, 235, 1)',
                         borderWidth: 1
-                    }]
-                },
-                options: {
-                    plugins: {
-                        datalabels: {
-                            color: '#000',
-                            anchor: 'end',
-                            align: 'bottom',
-                            formatter: function(value) {
-                                return 'Rp' + value.toLocaleString();
-                            },
-                            font: {
-                                weight: 'bold',
-                                size: 12
-                            }
+                    },
+                    {
+                        label: 'Menunggak',
+                        data: {!! json_encode($menunggakTotals) !!},
+                        backgroundColor: 'rgba(255, 99, 132, 0.7)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                plugins: {
+                    datalabels: {
+                        color: '#000',
+                        anchor: 'end',
+                        align: 'top',
+                        formatter: function(value) {
+                            return 'Rp' + value.toLocaleString();
                         },
-                        legend: {
-                            display: true,
-                            position: 'bottom',
+                        font: {
+                            weight: 'bold',
+                            size: 10
                         }
                     },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            ticks: {
-                                callback: function(value) {
-                                    return 'Rp' + value.toLocaleString();
-                                }
+                    legend: {
+                        display: true,
+                        position: 'bottom'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return 'Rp' + value.toLocaleString();
                             }
                         }
-                    },
-                    responsive: true,
+                    }
                 },
-                plugins: [ChartDataLabels] // Daftarkan plugin
-            });
-        }
-    </script>
+                responsive: true
+            },
+            plugins: [ChartDataLabels] // pastikan ini tidak error
+        });
+    }
+</script>
 </x-app-layout>

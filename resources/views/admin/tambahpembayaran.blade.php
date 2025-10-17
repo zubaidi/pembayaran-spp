@@ -76,7 +76,11 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Keterangan</label>
-                                <input type="text" class="form-control" name="keterangan" placeholder="Masukkan keterangan (opsional)"></input>
+                                <select class="form-select" name="keterangan">
+                                    <option value="">Pilih Keterangan</option>>
+                                    <option value="Lunas">Lunas</option>>
+                                    <option value="Menunggak">Menunggak</option>>
+                                </select>
                             </div>
                         </div>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>

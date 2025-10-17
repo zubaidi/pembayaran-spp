@@ -37,14 +37,14 @@ class PembayaranController extends Controller
     }
 
     public function editPembayaran($id) {
-        $pembayaran = Pembayaran::findOrFail($id);
+        $pembayaran = Pembayaran::where('id_pembayaran', $id)->firstOrFail();
         $siswa = Siswa::all();
         $spp = Spp::all();
         return view('admin.editpembayaran', compact('pembayaran', 'siswa', 'spp'));
     }
 
     public function update(Request $request, $id) {
-        $pembayaran = Pembayaran::findOrFail($id);
+        $pembayaran = Pembayaran::where('id_pembayaran', $id)->firstOrFail();
 
         $pembayaran->update([
             'nis' => $request->input('nis'),

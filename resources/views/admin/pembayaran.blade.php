@@ -1,5 +1,11 @@
 <x-app-layout>
     <div class="container-fluid p-4">
+        @if (session('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Sukses!</strong> {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
         <!-- Pembayaran Page -->
         <div id="pembayaranPage" class="page">
             <h1 class="h3 mb-4">Data Pembayaran</h1>
